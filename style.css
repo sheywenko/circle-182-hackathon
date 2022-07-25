@@ -1,0 +1,105 @@
+/* Global styling  */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+*{
+
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+
+}
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+  }
+  
+body{
+    background: #E8F3F9;
+    width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+.form-container {
+    width: 400px;
+    max-width: 700px;
+    /* width: 400px; */
+    margin: 0 auto;
+  }
+  .form-wrapper {
+    margin-top: 100px;
+    width:100%;
+    border-radius: 2px;
+    background: hsla(0, 0%, 100%, 1);
+
+    
+  }
+
+
+  img {
+   width: 30px;
+   float: right;
+   margin-top: -35px;
+   margin-right: 5px;
+  }
+  h2{
+      /* padding: 1rem ; */
+      color: hsla(0, 0%, 0%, 1);
+      line-height: 54px;
+      font-size: 2.5rem;
+      font-weight: 600;
+
+  }
+  h4{
+      color: hsla(0, 0%, 0%, 1);
+      font-size: 1.2rem;
+  }
+  form {
+    padding: 30px 40px;
+  
+    margin-bottom: 20px;
+  }
+  .form-control {
+      margin-top: 50px;
+    padding-bottom: 10px;
+    position: relative;
+  }
+  .form-control label {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  .form-control input {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    outline: none;
+    padding: 10px;
+ border: 1px solid #1686C1;
+  
+  }
+  
+
+  .submit-control button{
+    width: 85%;
+    
+    padding: 10px;
+    margin-left: 20px;
+    border-radius: 4px;
+    outline: none;
+    background-color: #147AB0;
+    font-size: 1.6rem;
+    border: none;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: #fff;
+  }
+  
+  
+
+  @media (max-width: 600px) {
+    .form-container {
+      width: 300px;
+    }  
+  
+  }
