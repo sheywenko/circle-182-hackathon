@@ -12,9 +12,12 @@ function startApp() {
 
   const button = document.querySelector("#btn");
   const result = document.querySelector("#result");
+
+
   const services = [
     {
       name: "MTN",
+
       items: [
         "703",
         "706",
