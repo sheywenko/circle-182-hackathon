@@ -4,20 +4,15 @@ function startApp() {
   // so create and use/call additional functions from here
 
   // pls remove the below and make some magic in here!
-  document.querySelector("form").addEventListener(
-    "submit", (e) => {
-      e.preventDefault()
-    }
-  )
+  // DOM Elements
+  let img = document.querySelector("#networkImg");
+  let networkDisplay = document.querySelector("#networkDisplay");
+  let numberBeginsWith = " ";
 
-  const button = document.querySelector("#btn");
-  const result = document.querySelector("#result");
-
-
+  // List of Networks
   const services = [
     {
       name: "MTN",
-
       items: [
         "703",
         "706",
@@ -46,17 +41,48 @@ function startApp() {
     },
   ];
 
+  // Checking if phone number matches any network when user types in the input
+  document.querySelector("#phoneNumber").addEventListener("keyup", () => {
+    const phone = document.querySelector("#phoneNumber").value;
+    const resetDOMElements = () => {
+      img.classList.remove("active");
+      numberBeginsWith = "";
+      networkDisplay.innerHTML = "";
+      networkDisplay.classList.remove("active");
+    };
+    if (phone.trim()[0] == "0") {
+      if (phone.trim().length >= 5) {
+        findNumber();
+      } else {
+        resetDOMElements();
+      }
+    } else if (phone.trim()[0] == "+") {
+      if (phone.trim().length >= 7) {
+        findNumber();
+      } else {
+        resetDOMElements();
+      }
+    } else if (phone.trim()[0] == "2") {
+      if (phone.trim().length >= 6) {
+        findNumber();
+      } else {
+        resetDOMElements();
+      }
+    }
+  });
+
+  // findNumber function finds the network provider of a number
   const findNumber = () => {
     const phone = document.querySelector("#phoneNumber").value.trim();
-    result.textContent = "";
-    console.log(phone);
+
+    numberBeginsWith = "";
     let a = phone;
     let b = a[0] == "0" ? a.slice(1, 4) : a[0] == "+" ? a.slice(4, 7) : a;
+    numberBeginsWith =
+      a[0] == "0" ? "0" : a.slice(0, 4) == "+234" ? "+234" : a.slice(0, 4);
     let service = null;
-    let c = 0;
 
     for (let i = 0; i < services.length; i++) {
-      c++;
       let a =
         services[i].items.filter((elem) => elem == b).length > 0 ? true : false;
       if (a) {
@@ -64,16 +90,83 @@ function startApp() {
         break;
       }
     }
+
+    const imgSrc = [
+      "/img/MTN.png",
+      "/img/AIRTEL.jpg",
+      "/img/GLO.jpg",
+      "/img/9MOBILE.png",
+    ];
+
+    img.src = "";
+
     if (service) {
-      result.textContent = service;
+      networkDisplay.innerHTML = "";
+      if (service == "MTN") {
+        img.src = imgSrc[0];
+        img.classList.add("active");
+        services[0].items.map((item) => {
+          networkDisplay.innerHTML += `<div class="autocomplete">${numberBeginsWith}${item}</div>`;
+        });
+        networkDisplay.classList.add("active");
+      } else if (service == "Airtel") {
+        img.src = imgSrc[1];
+        img.classList.add("active");
+        services[1].items.map((item) => {
+          networkDisplay.innerHTML += `<div class="autocomplete">${numberBeginsWith}${item}</div>`;
+        });
+        networkDisplay.classList.add("active");
+      } else if (service == "GLO") {
+        img.src = imgSrc[2];
+        img.classList.add("active");
+        services[2].items.map((item) => {
+          networkDisplay.innerHTML += `<div class="autocomplete">${numberBeginsWith}${item}</div>`;
+        });
+        networkDisplay.classList.add("active");
+      } else if (service == "9Mobile") {
+        img.src = imgSrc[3];
+        img.classList.add("active");
+        services[3].items.map((item) => {
+          networkDisplay.innerHTML += `<div class="autocomplete">${numberBeginsWith}${item}</div>`;
+        });
+        networkDisplay.classList.add("active");
+      }
     }
-    console.log(c, service);
+
+    // Adding click event to the auto complete buttons
+    document.querySelectorAll(".autocomplete").forEach((elem) => {
+      elem.addEventListener("click", () => {
+        document.querySelector("#phoneNumber").value = elem.textContent;
+      });
+    });
   };
 
-  button.addEventListener("click", findNumber);
+  //Image slider
+  let i = 0;
+  let images = [
+    "/img/img1.png",
+    "/img/img2.jpeg",
+    "/img/img6.jpg",
+    "/img/img4.jpg",
+    "/img/img3.jpg",
+    "/img/img5.jpg",
+  ];
+  const slider = () => {
+    document.querySelector(
+      ".bg-image-wrapper"
+    ).style.backgroundImage = `url(${images[i]})`;
+    document.querySelector(".bg-image-wrapper").style.opacity = "1";
+    if (i < images.length - 1) {
+      i++;
+    } else {
+      i = 0;
+    }
 
-};
+    setTimeout("slider()", 4500);
+  };
 
+  window.onload = slider;
+}
 // ======= DO NOT EDIT ============== //
 export default startApp;
   // ======= EEND DO NOT EDIT ========= //

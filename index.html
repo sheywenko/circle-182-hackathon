@@ -16,16 +16,24 @@
     <div class="form-container">
       <div class="form-wrapper">
         <form>
-          <h2>Complete the Form </h2>
-          <h4>Fill in the form to complete your process</h4>
+          <h2>Complete The Form </h2>
+          <h4>Fill in your phone number to complete the process</h4>
           <div class="form-control">
+                  <div id="networkDisplay"></div>
+
             <label for="tel">Phone Number</label>
-            <input type="number" placeholder="Enter phone number" class="telphone" id="phoneNumber" required>
-            <!--<img src="img/download-glo.jpg" alt="">-->
+            <input type="tel" value="+234" class="telphone" id="phoneNumber" required>
+            
+                    <div class="img-container">
+         <img alt="netwrk" id="networkImg" />
+        </div>
+
+            
+            
           </div>
           <div class="submit-control">
-            <button type="submit" id="btn">Submit Form </button>
-            <div id="result"></div>
+            <button type="submit" class="btn">Submit</button>
+            
           </div>
         </form>
       </div>
